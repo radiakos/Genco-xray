@@ -1,0 +1,23 @@
+name: case118
+network: case118_ieee
+hf_model_repo: gridfm/genco-pf-datakit
+hf_files:
+  config: case118_ieee/base/seed0/case118_ieee_base_seed0.yaml
+  checkpoint: case118_ieee/base/seed0/best_model_state_dict.pt
+  normalizer_stats: case118_ieee/base/seed0/normalizer_stats.pt
+  # scenario ids of the checkpoint's train/val/test split (219,103 scenarios, split by load_scenario_idx)
+  splits_json: mlflow/eval/case118_ieee/base/seed0/8289694ec85b4df080e584d18a815b57/artifacts/stats/case118_ieee_scenario_splits.json
+hf_dataset_repo: gridfm/pf_small_case118_ieee   # 3.6 GB in full; 1105 Hive partitions of ~200 scenarios
+n_partitions: 25                 # download scenarios 0..~4999 only; eval uses their intersection with the test split
+# shipped config upgraded to v1 + split_from_existing_files (held-out scenarios only); used instead of hf_files.config
+graphkit_config: configs/graphkit/pf_case118_base_eval.yaml
+model_variant: base
+robustness_variant:              # Day-4 robustness check
+  config: case118_ieee/small/seed0/case118_ieee_small_seed0.yaml
+  checkpoint: case118_ieee/small/seed0/best_model_state_dict.pt
+  normalizer_stats: case118_ieee/small/seed0/normalizer_stats.pt
+splits: [test, nk/k01, nk/k02, nk/k03, nk/k04, nk/k05, nk/k06, nk/k07, nk/k08, nk/k09, nk/k10]   # nk/* generated in M2
+nk_generation: configs/datagen/case118_nk.yaml
+# M0: dataset args.log = topology_perturbation {type: random, k: 1, elements: [branch, gen], 22 variants/load scenario};
+# empirically every scenario has exactly one outage (77 % branch, 23 % gen) -> no N-0 in training.
+in_distribution_k: [1]

@@ -1,0 +1,306 @@
+{
+  "protocol": {
+    "batch_sizes": [
+      16,
+      32,
+      64
+    ],
+    "warmup": 20,
+    "timed": 50,
+    "cpu_batch_sizes": [
+      16
+    ],
+    "cpu_timed": 10,
+    "genco_split": "test_11"
+  },
+  "gpu_state_start": {
+    "sm_mhz": 210.0,
+    "sm_max_mhz": 2100.0,
+    "temp_c": 62.0,
+    "power_w": 19.29,
+    "throttle_reasons": "0x1",
+    "throttled": false
+  },
+  "genco_gpu": {
+    "device": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "by_batch": {
+      "16": {
+        "median": 21.107565624999935,
+        "q25": 21.01665000000086,
+        "q75": 21.23709218750003,
+        "mean": 21.253283500000038,
+        "n": 50,
+        "gpu_states": [
+          {
+            "sm_mhz": 1695.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 67.0,
+            "power_w": 51.16,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1695.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 73.0,
+            "power_w": 147.31,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1740.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 75.0,
+            "power_w": 146.82,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1665.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 77.0,
+            "power_w": 148.37,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1650.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 79.0,
+            "power_w": 148.27,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1635.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 80.0,
+            "power_w": 146.97,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1665.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 81.0,
+            "power_w": 146.94,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          }
+        ],
+        "throttled_any": true
+      },
+      "32": {
+        "median": 21.95004374999998,
+        "q25": 21.229313281249773,
+        "q75": 22.708113281249442,
+        "mean": 22.023538937499975,
+        "n": 50,
+        "gpu_states": [
+          {
+            "sm_mhz": 1620.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 72.0,
+            "power_w": 52.26,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1695.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 81.0,
+            "power_w": 146.82,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1635.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 84.0,
+            "power_w": 145.66,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1695.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 86.0,
+            "power_w": 148.99,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1335.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 85.0,
+            "power_w": 129.15,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1725.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 87.0,
+            "power_w": 124.85,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1335.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 87.0,
+            "power_w": 113.52,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          }
+        ],
+        "throttled_any": true
+      },
+      "64": {
+        "median": 221.19074687500097,
+        "q25": 196.9203003906257,
+        "q75": 266.9414800781258,
+        "mean": 241.6746787500003,
+        "n": 50,
+        "gpu_states": [
+          {
+            "sm_mhz": 1890.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 76.0,
+            "power_w": 87.26,
+            "throttle_reasons": "0x0",
+            "throttled": false
+          },
+          {
+            "sm_mhz": 1830.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 83.0,
+            "power_w": 91.53,
+            "throttle_reasons": "0x0",
+            "throttled": false
+          },
+          {
+            "sm_mhz": 1875.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 85.0,
+            "power_w": 90.68,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1815.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 87.0,
+            "power_w": 92.53,
+            "throttle_reasons": "0x4",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1230.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 86.0,
+            "power_w": 47.49,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1110.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 87.0,
+            "power_w": 51.72,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          },
+          {
+            "sm_mhz": 1110.0,
+            "sm_max_mhz": 2100.0,
+            "temp_c": 87.0,
+            "power_w": 51.63,
+            "throttle_reasons": "0x20",
+            "throttled": true
+          }
+        ],
+        "throttled_any": true
+      }
+    },
+    "best_batch_size": 16,
+    "ms_per_scenario": 21.107565624999935
+  },
+  "genco_cpu": {
+    "device": "cpu",
+    "by_batch": {
+      "16": {
+        "median": 478.64099062500287,
+        "q25": 474.6407906249992,
+        "q75": 484.3659062500017,
+        "mean": 481.2168743749993,
+        "n": 10
+      }
+    },
+    "best_batch_size": 16,
+    "ms_per_scenario": 478.64099062500287
+  },
+  "newton": {
+    "dc": {
+      "median": 48.340750000079424,
+      "q25": 37.75050000007241,
+      "q75": 51.62047499993605,
+      "mean": 46.72731100000124,
+      "n": 1000,
+      "iterations_median": 3.0,
+      "n_not_converged": 0
+    },
+    "flat": {
+      "median": 51.71779999989212,
+      "q25": 49.539574999869274,
+      "q75": 61.09412500001099,
+      "mean": 55.70792680000569,
+      "n": 1000,
+      "iterations_median": 4.0,
+      "n_not_converged": 0
+    },
+    "genco": {
+      "median": 36.967050000043855,
+      "q25": 26.082025000050635,
+      "q75": 38.852425000015955,
+      "mean": 35.17403949999698,
+      "n": 1000,
+      "iterations_median": 3.0,
+      "n_not_converged": 0
+    },
+    "network_assembly": {
+      "median": 4.411549999986164,
+      "q25": 4.249199999890152,
+      "q75": 4.816450000078021,
+      "mean": 4.797560399997337,
+      "n": 1000
+    }
+  },
+  "speedup": {
+    "genco_alone_vs_nr_cold": 2.450202023232714,
+    "all": {
+      "q_star": 0.36395,
+      "cold_resolve": 1.2952032212996982,
+      "warm_resolve": 1.4963894969248004,
+      "ceiling_1_over_q": 2.7476301689792555
+    },
+    "in_dist": {
+      "q_star": 0.4075,
+      "cold_resolve": 1.226046707745331,
+      "warm_resolve": 1.4297887003340106,
+      "ceiling_1_over_q": 2.4539877300613497
+    },
+    "k_le_5": {
+      "q_star": 0.4694,
+      "cold_resolve": 1.1395626846318445,
+      "warm_resolve": 1.344720123707557,
+      "ceiling_1_over_q": 2.130379207498935
+    },
+    "k_ge_10": {
+      "q_star": 0.33454545454545453,
+      "cold_resolve": 1.3464838738103473,
+      "warm_resolve": 1.5449806169132443,
+      "ceiling_1_over_q": 2.989130434782609
+    }
+  }
+}

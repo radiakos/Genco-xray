@@ -1,0 +1,45 @@
+{
+  "genco": {
+    "device": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "n_instances": 512,
+    "ms_per_instance_by_batch": {
+      "1": 97.19333847624512,
+      "2": 53.26323710960423,
+      "4": 31.66605585920479,
+      "8": 27.714315038792847,
+      "16": 26.866149804845918,
+      "32": 26.64616679703613
+    },
+    "best_batch_size": 32,
+    "ms_per_instance": 26.64616679703613,
+    "torch_compile": false,
+    "gpu_state_before": {
+      "sm_mhz": 1560.0,
+      "sm_max_mhz": 2100.0,
+      "temp_c": 56.0,
+      "power_w": 32.33,
+      "throttle_reasons": "0x0",
+      "throttled": false
+    },
+    "gpu_state_after": {
+      "sm_mhz": 975.0,
+      "sm_max_mhz": 2100.0,
+      "temp_c": 89.0,
+      "power_w": 91.53,
+      "throttle_reasons": "0x20",
+      "throttled": true
+    },
+    "valid": false,
+    "note": "19 Oct re-measurement (M5): started unthrottled at 56 C, ended SW-thermal throttled (0x20) at 89 C; laptop GPU cannot sustain the sweep. Supersedes the M2 value (77 ms, throttled from the start)."
+  },
+  "ac": {
+    "n_scenarios": 20000,
+    "ac_ms_median": 625.5699396133423,
+    "ac_ms_mean": 722.363955771923,
+    "dc_ms_median": 32.21452236175537,
+    "dc_ms_mean": 35.03355703353882,
+    "source": "datakit runtime_data (PowerModels, 1 process)"
+  },
+  "splits_used_for_ac": 20,
+  "speedup_ac_over_genco": 23.476920503362038
+}

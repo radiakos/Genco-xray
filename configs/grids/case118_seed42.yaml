@@ -1,0 +1,15 @@
+name: case118_seed42
+network: case118_ieee
+# Seed robustness (Module 7): the IEEE-118 *Base* checkpoint (hidden 48, 12 layers) trained with seed 42, evaluated on
+# our N-k sets only (unseen by every checkpoint, so no training-split restriction is needed), like case118_small.
+# data/case118_seed42 is a directory junction to data/case118 (same raw data and processed caches).
+hf_model_repo: gridfm/genco-pf-datakit
+hf_files:
+  config: case118_ieee/base/seed42/case118_ieee_base_seed42.yaml
+  checkpoint: case118_ieee/base/seed42/best_model_state_dict.pt
+  normalizer_stats: case118_ieee/base/seed42/normalizer_stats.pt
+hf_dataset_repo: gridfm/pf_small_case118_ieee
+n_partitions: 25
+model_variant: base
+splits: [nk/k01, nk/k02, nk/k03, nk/k04, nk/k05, nk/k06, nk/k07, nk/k08, nk/k09, nk/k10]
+in_distribution_k: [1]

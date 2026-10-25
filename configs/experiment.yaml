@@ -1,0 +1,43 @@
+# Global experiment settings. Loaded via gencoxray.config.load_config("configs/experiment.yaml").
+seed: 0
+results_dir: results
+data_dir: data
+device: cuda
+
+trace:                          # M1/M2
+  n_steps_expected: 12          # num_layers of the checkpoints we use; E0 asserts this
+  max_scenarios_per_split: 1000 # cap per split (Texas: per k). Texas traces ≈ 0.7 MB per scenario -> ~14 GB for 20 splits
+  batch_size: 64                # = one TRACES shard
+  e0_scenarios: 500
+
+labels:                         # M4/E2 thresholds (report all, headline = first)
+  tau_vm_pu: [0.005, 0.002, 0.01]
+  tau_loading: [0.05, 0.02]
+  decision_overload_threshold: 1.0
+
+trust:                          # M4
+  group_by: load_scenario       # never "scenario": topology variants of one load scenario must stay together
+  cv_folds: 5
+  bootstrap: 1000
+  combiner: logistic             # logistic | hgb
+  scenario_aggregate: q90        # max | mean | q90
+  shift_fit_k_max: 2
+
+conformal:                      # M4 (stretch E3)
+  alpha: 0.1
+  k_bins: [[1, 2], [3, 5], [6, 10], [11, 20]]
+
+hybrid:                         # M5
+  budgets: {start: 0.0, stop: 1.0, num: 101}
+  recall_target: 0.995
+  random_repeats: 20
+
+stress:                         # M6
+  voltage_band: [0.95, 1.05]
+  cvar_q: 0.95
+  topk: [10, 25, 50]
+
+joint:                          # M7
+  stress_quantile: 0.9
+  trust_quantile: 0.3333
+  stressed_loading_for_trust: 0.9

@@ -1,0 +1,10 @@
+# Optional (D3): runtime story for the hybrid solver.
+name: case2000
+network: case2000_goc
+hf_model_repo: gridfm/genco-pf-datakit
+hf_files:
+  config: case2000_goc/tiny/seed0/case2000_goc_tiny_seed0.yaml
+  checkpoint: case2000_goc/tiny/seed0/best_model_state_dict.pt
+  normalizer_stats: case2000_goc/tiny/seed0/normalizer_stats.pt
+model_variant: tiny
+splits: [test]

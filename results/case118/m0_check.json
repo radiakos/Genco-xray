@@ -1,0 +1,13 @@
+{
+  "grid": "case118",
+  "split": "test",
+  "strict_load": true,
+  "n_steps": 12,
+  "base_mva_fitted": 137.93067932128906,
+  "n_test_scenarios": 572,
+  "graphkit_commit": "9d42d8233268dc92c07f334a643b20b134880f4e",
+  "forward_output_keys": [
+    "bus",
+    "gen"
+  ]
+}

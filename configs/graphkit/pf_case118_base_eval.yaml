@@ -1,0 +1,62 @@
+# GENCO base (hidden 48, 12 layers) PF checkpoint gridfm/genco-pf-datakit case118_ieee/base/seed0,
+# auto-upgraded v0 -> v1 with graphkit's upgrade_config. Only change: the split is read from
+# data/case118/data/splits (= the training run's scenario split restricted to the downloaded scenarios,
+# written by scripts/download_checkpoints_and_data.py), so predict/evaluate run on held-out scenarios only.
+task:
+  task_name: PowerFlow
+data:
+  baseMVA: 100
+  mask_value: 0.0
+  mask_ref_vm: true
+  normalization: HeteroDataMVANormalizer
+  networks:
+  - case118_ieee
+  scenarios:
+  - 250000
+  test_ratio: 0.1
+  val_ratio: 0.1
+  workers: 4
+  split_from_existing_files: data/case118/data/splits
+model:
+  attention_head: 8
+  edge_dim: 10
+  hidden_size: 48
+  input_bus_dim: 15
+  input_gen_dim: 6
+  output_bus_dim: 2
+  output_gen_dim: 1
+  num_layers: 12
+  type: GNS_heterogeneous
+optimizer:
+  type: AdamW
+  learning_rate: 0.0005
+  optimizer_params:
+    betas:
+    - 0.9
+    - 0.999
+  scheduler_type: ReduceLROnPlateau
+  scheduler_params:
+    mode: min
+    factor: 0.7
+    patience: 5
+training:
+  batch_size: 64
+  epochs: 200
+  loss_weights:
+  - 0.1
+  - 0.9
+  losses:
+  - LayeredWeightedPhysics
+  - MaskedBusMSE
+  loss_args:
+  - base_weight: 0.5
+  - {}
+  accelerator: auto
+  devices: auto
+  strategy: auto
+seed: 0
+verbose: true
+callbacks:
+  patience: 100
+  tol: 0
+version: 1

@@ -1,0 +1,44 @@
+{
+  "genco": {
+    "device": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "n_instances": 512,
+    "ms_per_instance_by_batch": {
+      "1": 98.6096999995425,
+      "4": 24.11034726537764,
+      "16": 5.9969568355882075,
+      "64": 3.4694005862547783,
+      "256": 4.528858203229902,
+      "512": 4.674328321016219
+    },
+    "best_batch_size": 64,
+    "ms_per_instance": 3.4694005862547783,
+    "torch_compile": false,
+    "gpu_state_before": {
+      "sm_mhz": 1560.0,
+      "sm_max_mhz": 2100.0,
+      "temp_c": 68.0,
+      "power_w": 32.48,
+      "throttle_reasons": "0x24",
+      "throttled": true
+    },
+    "gpu_state_after": {
+      "sm_mhz": 285.0,
+      "sm_max_mhz": 2100.0,
+      "temp_c": 76.0,
+      "power_w": 49.8,
+      "throttle_reasons": "0x24",
+      "throttled": true
+    },
+    "valid": false
+  },
+  "ac": {
+    "n_scenarios": 28904,
+    "ac_ms_median": 4.000186920166016,
+    "ac_ms_mean": 6.256246382003011,
+    "dc_ms_median": 1.9998550415039062,
+    "dc_ms_mean": 2.428959437496207,
+    "source": "datakit runtime_data (PowerModels, 1 process)"
+  },
+  "splits_used_for_ac": 11,
+  "speedup_ac_over_genco": 1.1529907892487623
+}

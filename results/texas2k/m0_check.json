@@ -1,0 +1,13 @@
+{
+  "grid": "texas2k",
+  "split": "test_1",
+  "strict_load": true,
+  "n_steps": 12,
+  "base_mva_fitted": 147.60838317871094,
+  "n_test_scenarios": 396,
+  "graphkit_commit": "9d42d8233268dc92c07f334a643b20b134880f4e",
+  "forward_output_keys": [
+    "bus",
+    "gen"
+  ]
+}

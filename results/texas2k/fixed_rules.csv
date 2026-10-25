@@ -1,0 +1,9 @@
+rule,share_flagged,recall_overload,n_missed,max_err_kept,recall_any_wrong,recall_wrong_bus,recall_wrong_branch,prevalence_any_wrong,margin_trust_recall_same_share,subset
+last_step_only,1.0,1.0,0,0.0,1.0,1.0,1.0,0.726,1.0,all
+recommendation,1.0,1.0,0,0.0,1.0,1.0,1.0,0.726,1.0,all
+last_step_only,1.0,1.0,0,0.0,1.0,1.0,1.0,0.422,1.0,in_dist
+recommendation,1.0,1.0,0,0.0,1.0,1.0,1.0,0.422,1.0,in_dist
+last_step_only,1.0,1.0,0,0.0,1.0,1.0,1.0,0.4938,1.0,k_le_5
+recommendation,1.0,1.0,0,0.0,1.0,1.0,1.0,0.4938,1.0,k_le_5
+last_step_only,1.0,1.0,0,0.0,1.0,1.0,1.0,0.8508181818181818,1.0,k_ge_10
+recommendation,1.0,1.0,0,0.0,1.0,1.0,1.0,0.8508181818181818,1.0,k_ge_10

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 540" width="1110" height="540" font-family="Helvetica, Arial, sans-serif">
+  <title>Recording GENCO's twelve intermediate solutions: two separate signals from one pass, checked against AC</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52514e"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8985"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1110" height="540" fill="#fcfcfb"/>
+
+  <!-- column headers -->
+  <text x="555" y="30" text-anchor="middle" font-size="15" fill="#0b0b0b" font-weight="bold">One GENCO pass, two separate signals, both checked against AC</text>
+  <text x="505" y="62" font-size="12" fill="#2a78d6" font-weight="bold">WHERE IS GENCO WRONG? Error checks</text>
+  <text x="505" y="362" font-size="12" fill="#c4521f" font-weight="bold">WHERE IS THE GRID STRESSED? Stress maps</text>
+
+  <!-- scenario -->
+  <rect x="15" y="222" width="150" height="76" rx="8" fill="#ffffff" stroke="#52514e" stroke-width="1.4"/>
+  <text x="90" y="246" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Scenario</text>
+  <text x="90" y="265" text-anchor="middle" font-size="11.5" fill="#52514e">load profile</text>
+  <text x="90" y="282" text-anchor="middle" font-size="11.5" fill="#52514e">× k outaged elements</text>
+
+  <!-- GENCO -->
+  <rect x="195" y="182" width="270" height="156" rx="8" fill="#f3f3f1" stroke="#52514e" stroke-width="1.4"/>
+  <text x="330" y="205" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">GENCO (released, unchanged)</text>
+  <g fill="#ffffff" stroke="#52514e" stroke-width="1">
+    <rect x="211" y="222" width="15" height="15"/><rect x="231" y="222" width="15" height="15"/>
+    <rect x="251" y="222" width="15" height="15"/><rect x="271" y="222" width="15" height="15"/>
+    <rect x="291" y="222" width="15" height="15"/><rect x="311" y="222" width="15" height="15"/>
+    <rect x="331" y="222" width="15" height="15"/><rect x="351" y="222" width="15" height="15"/>
+    <rect x="371" y="222" width="15" height="15"/><rect x="391" y="222" width="15" height="15"/>
+    <rect x="411" y="222" width="15" height="15"/>
+  </g>
+  <rect x="431" y="222" width="15" height="15" fill="#52514e" stroke="#52514e"/>
+  <path d="M 423 240 C 423 256, 218 256, 218 240" fill="none" stroke="#8a8985" stroke-width="1.2" marker-end="url(#arrg)"/>
+  <text x="320" y="270" text-anchor="middle" font-size="11" fill="#52514e">12 correction steps; mismatch fed back</text>
+  <text x="330" y="294" text-anchor="middle" font-size="11.5" fill="#0b0b0b">state x̂ₜ = (|V|, θ, Pᵍ, Qᵍ) per bus</text>
+  <text x="330" y="312" text-anchor="middle" font-size="11.5" fill="#0b0b0b">mismatch (ΔP, ΔQ) per bus</text>
+  <text x="330" y="329" text-anchor="middle" font-size="10.5" fill="#8a8985">last step = reported solution</text>
+
+  <!-- hooks label -->
+  <text x="482" y="172" text-anchor="end" font-size="10.5" fill="#52514e">recording hooks</text>
+
+  <!-- error-check path -->
+  <rect x="505" y="72" width="165" height="80" rx="8" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.4"/>
+  <text x="587" y="98" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0b0b0b">Intermediate solutions</text>
+  <text x="587" y="117" text-anchor="middle" font-size="11.5" fill="#52514e">x̂ₜ, mismatch, loading L̂ₜ</text>
+  <text x="587" y="134" text-anchor="middle" font-size="11.5" fill="#52514e">for t = 1 … 12</text>
+
+  <rect x="690" y="72" width="170" height="80" rx="8" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.4"/>
+  <text x="775" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Error checks</text>
+  <text x="775" y="117" text-anchor="middle" font-size="11.5" fill="#52514e">final mismatch (baseline)</text>
+  <text x="775" y="134" text-anchor="middle" font-size="11.5" fill="#52514e">last-step change</text>
+
+  <rect x="885" y="72" width="205" height="80" rx="8" fill="#eaf2fc" stroke="#2a78d6" stroke-width="1.4"/>
+  <text x="987" y="98" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Error predictor</text>
+  <text x="987" y="117" text-anchor="middle" font-size="11.5" fill="#52514e">fitted inside training range</text>
+  <text x="987" y="134" text-anchor="middle" font-size="11.5" fill="#2a78d6" font-weight="bold">→ error score ρ<tspan baseline-shift="sub" font-size="9">b</tspan></text>
+
+  <rect x="885" y="200" width="205" height="96" rx="8" fill="#ffffff" stroke="#2a78d6" stroke-width="1.4"/>
+  <text x="987" y="223" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Uses of the error score</text>
+  <text x="897" y="245" font-size="11.5" fill="#52514e">• error bands on loading</text>
+  <text x="897" y="264" font-size="11.5" fill="#52514e">• select the cases to re-solve</text>
+  <text x="897" y="281" font-size="11.5" fill="#52514e">  with AC</text>
+
+  <!-- stress path -->
+  <rect x="505" y="372" width="165" height="80" rx="8" fill="#fdeee6" stroke="#eb6834" stroke-width="1.4"/>
+  <text x="587" y="398" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Final state x̂₁₂</text>
+  <text x="587" y="417" text-anchor="middle" font-size="11.5" fill="#52514e">branch loadings L̂</text>
+  <text x="587" y="434" text-anchor="middle" font-size="11.5" fill="#52514e">for every scenario</text>
+
+  <rect x="690" y="372" width="170" height="80" rx="8" fill="#fdeee6" stroke="#eb6834" stroke-width="1.4"/>
+  <text x="775" y="398" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Stress map</text>
+  <text x="775" y="417" text-anchor="middle" font-size="11.5" fill="#52514e">tail loading per branch</text>
+  <text x="775" y="434" text-anchor="middle" font-size="11.5" fill="#52514e">(mean of worst 5 %)</text>
+
+  <rect x="885" y="372" width="205" height="80" rx="8" fill="#dce8f7" stroke="#0d366b" stroke-width="1.8"/>
+  <text x="987" y="398" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">Stress and accuracy map</text>
+  <text x="987" y="417" text-anchor="middle" font-size="11.5" fill="#52514e">which stressed branches</text>
+  <text x="987" y="434" text-anchor="middle" font-size="11.5" fill="#52514e">to verify with AC</text>
+
+  <!-- reference -->
+  <rect x="505" y="222" width="355" height="76" rx="8" fill="#ffffff" stroke="#8a8985" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="682" y="246" text-anchor="middle" font-size="13" font-weight="bold" fill="#0b0b0b">AC power flow (reference), DC baseline</text>
+  <text x="682" y="265" text-anchor="middle" font-size="11.5" fill="#52514e">error labels and validation, reference for stress maps;</text>
+  <text x="682" y="282" text-anchor="middle" font-size="11.5" fill="#52514e">never an input to GENCO or to the error checks</text>
+
+  <!-- arrows -->
+  <g stroke="#52514e" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <path d="M 165 260 L 193 260"/>
+    <path d="M 465 230 L 488 230 L 488 112 L 503 112"/>
+    <path d="M 465 290 L 488 290 L 488 412 L 503 412"/>
+    <path d="M 670 112 L 688 112"/>
+    <path d="M 860 112 L 883 112"/>
+    <path d="M 987 152 L 987 198"/>
+    <path d="M 670 412 L 688 412"/>
+    <path d="M 860 412 L 883 412"/>
+    <path d="M 1090 112 L 1102 112 L 1102 412 L 1092 412"/>
+  </g>
+  <g stroke="#8a8985" stroke-width="1.3" fill="none" stroke-dasharray="5 4" marker-end="url(#arrg)">
+    <path d="M 850 222 L 897 154"/>
+    <path d="M 775 298 L 775 370"/>
+  </g>
+
+  <!-- legend -->
+  <g font-size="11.5" fill="#52514e">
+    <rect x="20" y="492" width="16" height="12" fill="#eaf2fc" stroke="#2a78d6"/>
+    <text x="42" y="502">error checks: where GENCO is wrong</text>
+    <rect x="290" y="492" width="16" height="12" fill="#fdeee6" stroke="#eb6834"/>
+    <text x="312" y="502">stress: where the grid is stressed</text>
+    <line x1="545" y1="498" x2="575" y2="498" stroke="#8a8985" stroke-width="1.3" stroke-dasharray="5 4"/>
+    <text x="582" y="502">used only for labels and validation</text>
+    <text x="20" y="526" fill="#8a8985">Stress maps use GENCO's final states only. The error predictor is fitted only on outage counts inside GENCO's training range and tested on all others.</text>
+  </g>
+</svg>

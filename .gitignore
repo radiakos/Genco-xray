@@ -1,0 +1,28 @@
+/data/
+# results: keep the small tables behind every number (summary, write-up numbers, per-system csv/json); never the
+# per-split parquet tables, traces or logs
+results/*
+!results/.gitkeep
+!results/summary.json
+!results/writeup_numbers.md
+!results/GRAPHKIT_COMMIT
+!results/*/
+results/*/*
+!results/*/*.csv
+!results/*/*.json
+mlruns/
+__pycache__/
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
+
+# large / generated artefacts: never commit data, traces, checkpoints or run logs
+*.parquet
+*.npz
+*.pt
+*.ckpt
+*.safetensors
+*.log
+
+# local presentation assets
+presentation/

@@ -1,0 +1,19 @@
+name: texas2k
+network: Texas2k_case1_2016summerpeak
+hf_model_repo: gridfm/genco-pf-contingency
+hf_files:
+  checkpoint: model/training_bs_16/best_model_state_dict.pt
+  normalizer_stats: model/training_bs_16/normalizer_stats.pt
+  train_params: mlflow/train/training_bs_16/
+raw_data_root: data/{split}/Texas2k_case1_2016summerpeak/raw   # ~6.5 GB per split in full
+n_partitions: 5                  # 5 x 200 = the first 1000 of ~8800 scenarios per test_k (0.74 GB each)
+trace_batch_size: 16             # 8 GB GPU: the config's 256 OOMs; 16 = training batch size
+runtime_batch_sizes: [1, 2, 4, 8, 16, 32]   # M2 runtime sweep (8 GB GPU)
+# v0 config from the paper branch (scripts/contingency/configs/caseTexas_eval.yaml); convert with auto_inline
+graphkit_config: configs/graphkit/caseTexas_eval.yaml
+model_variant: base              # hidden 48, 12 layers, 8 heads
+trained_on: "N-2 (branches and/or generators)"
+splits: [test_1, test_2, test_3, test_4, test_5, test_6, test_7, test_8, test_9, test_10,
+         test_11, test_12, test_13, test_14, test_15, test_16, test_17, test_18, test_19, test_20]
+k_of_split: "int(split.split('_')[1])"
+in_distribution_k: [1, 2]
