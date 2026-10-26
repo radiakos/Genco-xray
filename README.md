@@ -1,26 +1,32 @@
-# Check GENCO like Newton–Raphson
+# Convergence Checks for GENCO: The Last Update Flags Inaccurate Solutions
 
-**The last correction step shows when GENCO is wrong; its final mismatch does not.**
-Code for the GENCO Challenge 2026 entry *"Check GENCO Like Newton–Raphson: the Last Correction Step Shows When It Is
-Wrong"* (full text: [final_submission_genco_challenge.md](final_submission_genco_challenge.md)).
+**GENCO's final power mismatch is a weak indicator of inaccurate solutions; the size of its last update is a strong one.**
+Code and result tables for the GENCO Challenge 2026 entry (direction: hybrid solvers). Full text:
+[final_submission.md](final_submission.md). Approaches that did not work:
+[supplementary_negative_results.md](supplementary_negative_results.md).
 
-GENCO (the graph neural power-flow solver of [gridfm-graphkit](https://github.com/gridfm/gridfm-graphkit)) refines
-its solution in twelve correction steps and is normally judged by its final power mismatch. We record all twelve
-intermediate solutions of the released checkpoints, without changing or retraining the model, and compare every check
-with AC power flow on 44,476 contingency scenarios (Texas 2000-bus and IEEE 118-bus, 1 to 20 outages).
+A Newton–Raphson power flow is considered converged when two quantities are small: the power mismatch and the state
+update of the last iteration. GENCO (the graph neural power-flow solver of
+[gridfm-graphkit](https://github.com/gridfm/gridfm-graphkit)) solves AC power flow in twelve iterations; the GENCO
+paper checks it by its power mismatch and never reports whether its state has stopped changing. We record all twelve
+intermediate iterates of the released checkpoints, without modifying or retraining the model, and compare every
+criterion with AC power flow on 44,476 contingency cases (Texas 2000-bus, N-1 to N-20; IEEE 118-bus, N-1 to N-10).
 
-![Final mismatch against last-step change](docs/figures/mismatch_against_last_step_change_texas2k.png)
+![Final mismatch against last update](docs/figures/mismatch_against_last_step_change_texas2k.png)
 
-Main results (details, intervals and caveats in the submission):
-- For individual buses and branches, the change of GENCO's estimate in the last step detects wrong predictions far
-  better than the final mismatch (AUROC 0.87–0.97 against 0.45–0.85). The score needs no AC labels or training; only
-  its threshold does. One Newton step from GENCO's solution is a near-perfect check (AUROC ≥ 0.9996) and decides
-  overloads almost exactly without AC re-solves, at the cost of one Jacobian factorization per scenario.
-- Also included: a fitted error predictor, selection rules for AC re-solves (with and without a Newton step), error
-  bands for branch loading, and contingency stress maps that agree with AC far better than DC power flow (rank
-  correlation 0.9999 against 0.959 on Texas 2000-bus).
-- Negative results: load-to-flow sensitivities from GENCO's gradients are worse than DC distribution factors. No
-  wall-clock speed-up is claimed.
+Main results (details, intervals and limitations in the submission):
+- **The final mismatch is a weak indicator.** AUROC is 0.45–0.85; for IEEE 118-bus voltages it is no better than
+  chance in two of three independently trained models.
+- **The last update is a strong indicator for individual buses and branches.** AUROC is 0.87–0.97 on the training
+  contingency orders, and it flags 2.4 to 20 times fewer buses and branches than the final mismatch for the same
+  capture of inaccurate values. It needs no AC solution, except to set its threshold once.
+- **One Newton step from GENCO's solution is a near-exact check** (AUROC ≥ 0.9996) and gives correct overload verdicts
+  without AC verification: 7 incorrect verdicts in 20,000 Texas cases, against 1,806 for GENCO alone.
+- **Screening cases for AC verification:** ranking cases by the margin to the thermal limit divided by the expected
+  loading error detects 99.5 % of overloaded N-10 to N-20 cases on Texas after verifying 33.5 % of them (44.5 % for
+  the margin alone; 67–89 % for ranking by error magnitude).
+- **Critical-branch ranking:** GENCO's tail loading agrees with AC better than DC power flow does (rank correlation
+  0.9999 against 0.959 on Texas 2000-bus). The map measures how hard a branch is for GENCO, not how weak the grid is.
 
 ## Use the check on your own GENCO runs
 
@@ -44,9 +50,9 @@ CUDA_TAG=cu126 bash scripts/00_setup_env.sh              # environment (see also
 python scripts/download_checkpoints_and_data.py --grid case118 --grid texas2k
 python scripts/data/generate_case118_contingency_sets.py # IEEE 118-bus contingency sets (needs Julia + PowerModels)
 make sanity-checks GRID=case118                          # recorded states reproduce GENCO's own output
-make capture-intermediate-solutions GRID=texas2k         # record the twelve steps (about 15 GB for both systems)
+make capture-intermediate-solutions GRID=texas2k         # record the twelve iterations (about 15 GB for both systems)
 make build-features error-check ac-resolve-selection stress-maps stress-and-accuracy-map GRID=texas2k
-make last-step-check newton-check GRID=texas2k           # label-free check; Newton step; figures
+make last-step-check newton-check GRID=texas2k           # last-update check; Newton step; figures
 python scripts/write_report_numbers.py                   # every number of the submission -> results/writeup_numbers.md
 pytest -q                                                # acceptance tests
 ```
@@ -86,14 +92,14 @@ resampling and tie-breaking. CPU computation is deterministic; on the GPU, scatt
 recordings differ at float32 round-off.
 
 **Verification.** The acceptance tests (`pytest -q`) check, among other things, that each method recovers structure
-planted in synthetic data, that the fast resampling equals its row-level definition and that the re-solve curve matches
+planted in synthetic data, that the fast resampling equals its row-level definition and that the AC-verification screening curve matches
 brute force.
 
 ## Layout
 
 | Path | Content |
 |---|---|
-| `src/gencoxray/` | recording hooks (`trace`), features, error predictor (`trust`), Newton–Raphson toolkit (`newton`), last-step check (`last_step_check`, `check`), hybrid selection, stress maps, figures (`viz/`) |
+| `src/gencoxray/` | recording hooks (`trace`), features, fitted error model (`trust`), Newton–Raphson toolkit (`newton`), last-update check (`last_step_check`, `check`), screening for AC verification, critical-branch ranking (stress maps), figures (`viz/`) |
 | `scripts/` | one script per stage, named after what it does; `make` targets have the same names |
 | `configs/` | grid, experiment and data-generation settings |
 | `results/` | `summary.json`, `writeup_numbers.md` and the per-system CSV/JSON tables behind every number and figure |
